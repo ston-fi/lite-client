@@ -1,0 +1,12 @@
+import { TonClient } from '@ton/ton';
+
+const client = new TonClient({ endpoint: "https://toncenter.com/api/v2/jsonRPC" });
+
+async function getAccountBalance(address: string) {
+   return await client.getBalance(address);
+}
+
+async function sendTransaction(sender: string, recipient: string, amount: BigInt) {
+   const txParams = await client.buildTransaction(sender, recipient, amount);
+   return await client.sendTransaction(txParams);
+}
