@@ -19,26 +19,13 @@ checksum = "f26201604c87b1e01bd3d98f8d5d9a8fcbb815e8cedb41ffccbeb4bf593a35fe"
 
 [[package]]
 name = "adnl"
-version = "0.1.0"
+version = "2.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "02b9094e4e606e5b8b3c3a6b37cee520e8d9bf327375549a14718a93af84f2d3"
-dependencies = [
- "aes",
- "ciborium-io",
- "ctr",
- "log",
- "rand_core",
- "sha2",
-]
-
-[[package]]
-name = "adnl"
-version = "1.0.0"
-source = "git+https://github.com/tonstack/adnl-rs?branch=server#19394279b93f3bb25735b35dd095f0540361b24b"
+checksum = "8b3cb50ffb09675285804083fc6283ad84a0857db567280959903b84c9ea3aac"
 dependencies = [
  "aes",
  "ctr",
- "curve25519-dalek",
+ "everscale-crypto",
  "futures",
  "hex",
  "log",
@@ -49,7 +36,6 @@ dependencies = [
  "thiserror",
  "tokio",
  "tokio-util",
- "x25519-dalek",
 ]
 
 [[package]]
@@ -233,12 +219,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "ciborium-io"
-version = "0.2.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "05afea1e0a06c9be33d539b876f1ce3692f4afea2cb41f740e7743225ed1c757"
-
-[[package]]
 name = "cipher"
 version = "0.4.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -291,7 +271,6 @@ dependencies = [
 name = "cli"
 version = "0.1.0"
 dependencies = [
- "adnl 0.1.0",
  "base64 0.13.1",
  "chrono",
  "clap",
@@ -301,6 +280,7 @@ dependencies = [
  "pretty-hex",
  "rand",
  "regex",
+ "tokio",
  "ton_liteapi",
  "ton_networkconfig",
  "ureq",
@@ -543,6 +523,20 @@ dependencies = [
  "env_filter",
  "humantime",
  "log",
+]
+
+[[package]]
+name = "everscale-crypto"
+version = "0.2.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "0b0304a55e328ca4f354e59e6816bccb43b03f681b85b31c6bd10ea7233d62b5"
+dependencies = [
+ "curve25519-dalek",
+ "generic-array",
+ "hex",
+ "rand",
+ "sha2",
+ "tl-proto",
 ]
 
 [[package]]
@@ -1505,7 +1499,7 @@ dependencies = [
 name = "ton_liteapi"
 version = "0.1.0"
 dependencies = [
- "adnl 1.0.0",
+ "adnl",
  "base64 0.13.1",
  "derivative",
  "env_logger 0.11.3",
@@ -1528,7 +1522,6 @@ dependencies = [
 name = "ton_networkconfig"
 version = "0.1.0"
 dependencies = [
- "adnl 0.1.0",
  "serde",
  "serde_json",
  "serde_with",
